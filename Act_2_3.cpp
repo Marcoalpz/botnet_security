@@ -1,6 +1,6 @@
 /*
 *   Act_2_3.cpp - Equipo 8
-*   
+*
 *   Ordenar direcciones IP
 *
 *   Rafael Alejandro Jimenez Lafuente   A01637850
@@ -62,7 +62,7 @@ int main() {
         index = index->next;
     }
     */
-
+    cout<<endl;
 	cout << "Busca una IP de inicio: ";
     string stringIPinferior;
     cin >> stringIPinferior;
@@ -70,11 +70,27 @@ int main() {
     cout << "Busca una IP de fin: ";
     string stringIPsuperior;
     cin >> stringIPsuperior;
+    cout<<endl;
     DbLinkedListNode *fin = fallas.binarySearch(DireccionIP(stringIPsuperior));
     while(inicio != fin->next){
 		cout << inicio->falla << endl;
 		inicio = inicio->next;
 	}
 
+	cout<<endl;
+	cout<<"Espera un momento, estamos creando la copia ordenada en un archivo txt"<<endl;
+	ofstream salida;
+
+	salida.open("Bitacora_Ordenada.txt",ios::out);
+
+	if(salida.fail()){
+        cout<<"No se pudo realizar la copia"<<endl;
+	}
+
+	salida<<fallas<<endl;
+
+	salida.close();
+	cout<<endl;
+	cout<<"Archivo copiado"<<endl;
 	return 0;
 }
